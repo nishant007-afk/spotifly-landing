@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spotifly - Music for Everyone</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:#0a0a0a;color:#fff;overflow-x:hidden}
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:2rem;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-40%;left:50%;transform:translateX(-50%);width:800px;height:800px;background:radial-gradient(circle,#1DB95415 0%,transparent 70%);pointer-events:none}
+.hero::after{content:'';position:absolute;top:20%;left:50%;transform:translateX(-50%);width:500px;height:500px;background:radial-gradient(circle,#1DB95408 0%,transparent 70%);pointer-events:none}
+.logo{font-size:2.5rem;font-weight:900;color:#1DB954;margin-bottom:1rem;letter-spacing:-1px}
+.hero h1{font-size:clamp(2.5rem,6vw,4.5rem);font-weight:900;line-height:1.05;margin-bottom:1.5rem;max-width:750px;letter-spacing:-2px}
+.hero h1 .green{color:#1DB954}
+.hero p{font-size:1.2rem;color:#a0a0a0;max-width:480px;line-height:1.7;margin-bottom:2.5rem}
+.btn{display:inline-flex;align-items:center;gap:0.75rem;background:#1DB954;color:#000;font-size:1.05rem;font-weight:700;padding:1rem 2.5rem;border-radius:50px;text-decoration:none;transition:all 0.3s ease;box-shadow:0 0 40px #1DB95422}
+.btn:hover{transform:translateY(-2px) scale(1.02);box-shadow:0 0 60px #1DB95433;background:#1ed760}
+.btn svg{width:22px;height:22px}
+.btn-dark{background:#fff;color:#000}
+.btn-dark:hover{background:#e8e8e8}
+.section{padding:7rem 2rem;text-align:center}
+.section h2{font-size:clamp(2rem,4vw,3rem);font-weight:900;margin-bottom:1rem;letter-spacing:-1px}
+.section>p,.section .sub{color:#a0a0a0;font-size:1.1rem;max-width:550px;margin:0 auto;line-height:1.7}
+.features{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;max-width:1050px;margin:3.5rem auto 0;padding:0 0.5rem}
+.feature{background:linear-gradient(135deg,#161616 0%,#111 100%);border:1px solid #1a1a1a;border-radius:20px;padding:2rem;text-align:left;transition:all 0.3s ease}
+.feature:hover{border-color:#1DB95433;transform:translateY(-3px);box-shadow:0 8px 40px #00000066}
+.feature .icon{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;font-size:1.4rem}
+.feature h3{font-size:1.15rem;font-weight:700;margin-bottom:0.5rem}
+.feature p{color:#a0a0a0;font-size:0.95rem;line-height:1.6}
+.phones{display:flex;gap:2rem;justify-content:center;align-items:flex-end;max-width:900px;margin:3.5rem auto 0;flex-wrap:wrap}
+.phone{position:relative;width:220px;border-radius:36px;background:#111;border:3px solid #2a2a2a;overflow:hidden;box-shadow:0 30px 80px #00000088;flex-shrink:0}
+.phone::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:80px;height:24px;background:#0a0a0a;border-radius:0 0 16px 16px;z-index:2}
+.phone-screen{width:100%;aspect-ratio:9/19.5;display:flex;flex-direction:column;overflow:hidden}
+.ps-header{padding:2.2rem 1rem 0.6rem;font-weight:700;font-size:1rem}
+.ps-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;padding:0.4rem 0.8rem}
+.ps-card{height:44px;border-radius:6px;display:flex;align-items:center;gap:6px;padding:0 8px;overflow:hidden}
+.ps-card img{width:32px;height:32px;border-radius:4px}
+.ps-card span{font-size:0.6rem;font-weight:600;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ps-section{padding:1rem 1rem 0.3rem;font-weight:700;font-size:0.85rem}
+.ps-list{padding:0 0.8rem}
+.ps-track{display:flex;align-items:center;gap:8px;padding:6px 0}
+.ps-track-img{width:40px;height:40px;border-radius:4px;background:#282828}
+.ps-track-info{flex:1;min-width:0}
+.ps-track-title{font-size:0.7rem;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ps-track-artist{font-size:0.6rem;color:#a0a0a0}
+.ps-player{position:absolute;bottom:0;left:0;right:0;background:#282828;border-radius:12px 12px 0 0;padding:10px 12px;display:flex;align-items:center;gap:8px}
+.ps-player-img{width:36px;height:36px;border-radius:6px;background:#333}
+.ps-player-info{flex:1;min-width:0}
+.ps-player-title{font-size:0.65rem;font-weight:600}
+.ps-player-artist{font-size:0.55rem;color:#a0a0a0}
+.ps-player-btn{width:28px;height:28px;background:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center}
+.ps-player-btn::after{content:'';border-left:10px solid #000;border-top:6px solid transparent;border-bottom:6px solid transparent;margin-left:2px}
+.phone.home .ps-header{color:#fff}
+.phone.home .ps-card:nth-child(1){background:#E91E63}.phone.home .ps-card:nth-child(2){background:#1E3264}
+.phone.home .ps-card:nth-child(3){background:#7358FF}.phone.home .ps-card:nth-child(4){background:#148A08}
+.phone.home .ps-card:nth-child(5){background:#509BF5}.phone.home .ps-card:nth-child(6){background:#BA5D07}
+.phone.search .ps-screen{background:#121212}
+.phone.search .ps-search{margin:2rem 0.8rem 0;background:#282828;border-radius:8px;padding:10px 12px;display:flex;align-items:center;gap:8px}
+.phone.search .ps-search-icon{color:#a0a0a0;font-size:0.85rem}
+.phone.search .ps-search-text{font-size:0.75rem;color:#727272}
+.phone.search .ps-cat-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;padding:0.8rem}
+.phone.search .ps-cat{height:55px;border-radius:8px;padding:8px;font-size:0.7rem;font-weight:700;color:#fff;display:flex;align-items:flex-end}
+.phone.player .ps-screen{background:linear-gradient(180deg,#1a2744 0%,#121212 50%)}
+.phone.player .ps-art{width:140px;height:140px;border-radius:12px;margin:2.5rem auto 0;background:linear-gradient(135deg,#1DB954 0%,#134d26 100%);box-shadow:0 20px 60px #00000066}
+.phone.player .ps-track-name{font-size:1rem;font-weight:800;text-align:center;margin:1rem 0.8rem 0.2rem}
+.phone.player .ps-track-art{font-size:0.8rem;color:#a0a0a0;text-align:center}
+.phone.player .ps-bar{margin:1rem 1rem 0;height:3px;background:#333;border-radius:2px;position:relative}
+.phone.player .ps-bar-fill{position:absolute;left:0;top:0;bottom:0;width:35%;background:#fff;border-radius:2px}
+.phone.player .ps-bar-dot{position:absolute;left:35%;top:50%;transform:translate(-50%,-50%);width:10px;height:10px;background:#fff;border-radius:50%;box-shadow:0 0 6px #fff}
+.phone.player .ps-ctrls{display:flex;justify-content:center;align-items:center;gap:2rem;margin-top:1rem}
+.phone.player .ps-ctrl{color:#fff;font-size:0.9rem;opacity:0.8}
+.phone.player .ps-play{width:44px;height:44px;background:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center}
+.phone.player .ps-play::after{content:'';border-left:14px solid #000;border-top:8px solid transparent;border-bottom:8px solid transparent;margin-left:3px}
+.phone.player .ps-lyrics{margin-top:1rem;padding:0 1rem}
+.phone.player .ps-lyric{font-size:0.85rem;font-weight:700;color:#ffffff33;margin-bottom:0.5rem}
+.phone.player .ps-lyric.active{color:#fff;font-size:0.95rem}
+.phone:nth-child(2){transform:translateY(20px)}
+.stats{display:flex;gap:5rem;justify-content:center;margin:3rem auto 0;flex-wrap:wrap}
+.stat{text-align:center}
+.stat .num{font-size:2.8rem;font-weight:900;color:#1DB954;letter-spacing:-1px}
+.stat .label{color:#a0a0a0;font-size:0.9rem;margin-top:0.25rem}
+.cta{background:linear-gradient(135deg,#1DB954 0%,#169c46 100%);padding:6rem 2rem;text-align:center;position:relative;overflow:hidden}
+.cta::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(circle at 30% 50%,#ffffff11 0%,transparent 60%)}
+.cta h2{font-size:clamp(2rem,4vw,3rem);font-weight:900;color:#000;margin-bottom:1rem;letter-spacing:-1px;position:relative}
+.cta p{color:#000000aa;font-size:1.1rem;margin-bottom:2.5rem;position
