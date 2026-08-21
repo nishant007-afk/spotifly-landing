@@ -1,0 +1,6 @@
+$env:JAVA_HOME = "C:\jdk17\jdk-17.0.20+8"
+$env:ANDROID_HOME = "C:\Users\dell\AppData\Local\Android\Sdk"
+$env:PATH = "$env:JAVA_HOME\bin;$env:ANDROID_HOME\platform-tools;$env:PATH"
+Set-Location "C:\Users\dell\Desktop\spotify-clone\android"
+& .\gradlew.bat assembleDebug --no-daemon 2>&1 | Out-File -FilePath "C:\Users\dell\Desktop\spotify-clone\build-output2.log"
+"BUILD_STATUS:$LASTEXITCODE" | Out-File -FilePath "C:\Users\dell\Desktop\spotify-clone\build-status2.txt"

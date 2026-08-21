@@ -1,0 +1,38 @@
+export const COLORS = {
+  primary: '#1DB954',
+  primaryDark: '#1AA34A',
+  background: '#121212',
+  surface: '#181818',
+  surfaceLight: '#282828',
+  surfaceHighlight: '#333333',
+  textPrimary: '#FFFFFF',
+  textSecondary: '#B3B3B3',
+  textMuted: '#727272',
+  accent: '#1DB954',
+  like: '#E91E63',
+  heart: '#E91E63',
+  playerBackground: '#282828',
+  playerProgress: '#B3B3B3',
+  playerProgressPlayed: '#FFFFFF',
+  tabBar: '#000000',
+  tabBarInactive: '#B3B3B3',
+  tabBarActive: '#FFFFFF',
+  gradientStart: '#1E3264',
+  gradientEnd: '#121212',
+  gradientCard: '#404040',
+  categories: [
+    '#E13300', '#1E3264', '#148A08', '#8D67AB',
+    '#E8115B', '#7358FF', '#1E3264', '#E13300',
+    '#F59B23', '#DC148C', '#509BF5', '#BA5D07',
+  ],
+};
+
+export const SPACING = {
+  xs: 4,
+  sm: 8,
+  md: 12,
+  lg: 16,
+  xl: 20,
+  xxl: 24,
+  xxxl: 32,
+};
